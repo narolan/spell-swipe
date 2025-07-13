@@ -42,6 +42,18 @@ body {
   z-index: 2;
 }
 
+@keyframes shake {
+  0% { transform: translateX(-8px); }
+  25% { transform: translateX(8px); }
+  50% { transform: translateX(-6px); }
+  75% { transform: translateX(6px); }
+  100% { transform: translateX(0); }
+}
+
+.card.wrong {
+  animation: shake 0.4s ease;
+}
+
 .endCard {
   background-color: #333;
 }
@@ -90,6 +102,10 @@ body {
   pointer-events: none;
   transition: opacity 0.4s ease;
   z-index: 10;
+}
+
+.feedbackBanner.show {
+  opacity: 1;
 }
 
 .feedbackBanner.correct {

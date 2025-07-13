@@ -2,19 +2,23 @@ import React from "react";
 import './App.css'
 import Swipe from "react-easy-swipe";
 
-const data = [
-    {name: "Fireball", type: "spell"},
-    {name: "DoomSword", type: "band"},
-    {name: "Magic Missile", type: "spell"},
-    {name: "Bal-Sagoth", type: "spell"}
-]
-
 const App = () => {
+    const [cards, setCards] = React.useState([
+        {name: "Fireball", type: "spell"},
+        {name: "DoomSword", type: "band"},
+        {name: "Magic Missile", type: "spell"},
+        {name: "Bal-Sagoth", type: "band"}
+    ]);
     const [index, setIndex] = React.useState(0);
     const [x, setX] = React.useState(0);
     const [isSwiping, setIsSwiping] = React.useState(false);
+    const [showFeedback, setShowFeedback] = React.useState(null);
 
-    const currentCard = data[index];
+    const currentCard = cards[index];
+
+    const shuffleArray = (array) => {
+        return [...array].sort(() => Math.random() - 0.5);
+    }
 
     const handleSwipeMove = (position) => {
         setIsSwiping(true);
@@ -25,14 +29,8 @@ const App = () => {
         if (!currentCard) return;
 
         let direction = null;
-
-        if (x > 100) {
-            direction = "right";
-            console.log("Swiped RIGHT: Might be a spell");
-        } else if (x < -100) {
-            direction = "left";
-            console.log("Swiped LEFT: Might be a band");
-        }
+        if (x > 100) direction = "right";
+        else if (x < -100) direction = "left";
 
         if (direction) {
             const isCorrect = (
@@ -40,32 +38,27 @@ const App = () => {
                 (direction === "left" && currentCard.type === "band")
             )
 
-            showFeedback(isCorrect);
+            setShowFeedback(isCorrect ? 'correct' : 'wrong');
 
-            if (index + 1 >= data.length) {
+            if (isCorrect) {
                 setTimeout(() => {
-                    setIndex((prev) => prev + 1 >= data.length ? -1 : prev + 1);
+                    setIndex((prev) => prev + 1 >= cards.length ? -1 : prev + 1);
+                    setShowFeedback(null);
                 }, 1000);
             } else {
-                setIndex((prev) => prev + 1 >= data.length ? -1 : prev + 1);
+                setTimeout(() => {
+                    const remaining = cards.slice(index);
+                    const before = cards.slice(0, index);
+                    const shuffled = shuffleArray(remaining);
+                    setCards([...before, ...shuffled]);
+                    setIndex(index);
+                    setShowFeedback(null);
+                }, 1000);
             }
         }
 
         setX(0);
         setIsSwiping(false);
-    }
-
-    const showFeedback = (isCorrect) => {
-        const banner = document.getElementById("feedbackBanner");
-        if (!banner) return;
-        banner.textContent = isCorrect ? "Correct!" : "Wrong!";
-        banner.classList.remove("correct", "wrong");
-        banner.classList.add(isCorrect ? "correct" : "wrong");
-        banner.style.opacity = 1;
-
-        setTimeout(() => {
-            banner.style.opacity = 0;
-        }, 1000);
     }
 
     return (
@@ -76,21 +69,27 @@ const App = () => {
                         <span className="swipeLabel left">Band</span>
                         <span className="swipeLabel right">DnD Spell</span>
                         <Swipe
-                            onSwipeMove={handleSwipeMove}
-                            onSwipeEnd={handleSwipeEnd}
+                            onSwipeMove={showFeedback ? undefined : handleSwipeMove}
+                            onSwipeEnd={showFeedback ? undefined : handleSwipeEnd}
                             allowMouseEvents={true}
                         >
                             <div
-                                className="card"
+                                className={`card ${showFeedback === 'wrong' ? 'wrong' : ''}`}
                                 style={{
                                     transform: `translateX(${x}px) rotate(${x / 20}deg)`,
-                                    transition: isSwiping ? 'none' : 'transform 0.3s ease'
+                                    transition: isSwiping ? 'none' : 'transform 0.3s ease',
+                                    opacity: showFeedback ? '0.6' : '1',
+                                    pointerEvents: showFeedback ? 'none' : 'auto',
                                 }}
                             >
                                 <h3>{currentCard.name}</h3>
                             </div>
                         </Swipe>
-                        <dive id="feedbackBanner" className="feedbackBanner"></dive>
+                        {showFeedback && (
+                            <div className={`feedbackBanner show ${showFeedback}`}>
+                                {showFeedback === 'correct' ? 'Correct!' : 'Wrong!'}
+                            </div>
+                        )}
                     </div>
 
                     :

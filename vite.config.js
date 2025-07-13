@@ -4,7 +4,7 @@ import react from '@vitejs/plugin-react'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: process.env.NODE_ENV === 'production' ? '/spell-swipe' : '/public/',
+  base: process.env.NODE_ENV === 'production' ? '/spell-swipe/' : '/public/',
   server: {
     open: true,
     port: 3000

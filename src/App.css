@@ -26,12 +26,12 @@ body {
 }
 
 .card{
-  width: 300px;
-  height: 400px;
+  width: clamp(240px, 60vw, 320px);
+  height: clamp(320px, 75vh, 440px);
   background-color: #2c2c3c;
   color: #fff;
-  font-size: 28px;
-  padding: 20px;
+  font-size: clamp(20px, 4vw, 28px);
+  padding: clamp(16px, 4vw, 24px);
   display: flex;
   justify-content: center;
   align-items: center;

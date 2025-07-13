@@ -26,8 +26,8 @@ body {
 }
 
 .card{
-  width: clamp(240px, 60vw, 320px);
-  height: clamp(320px, 75vh, 440px);
+  width: clamp(160px, 40vw, 320px);
+  height: clamp(220px, 60vh, 440px);
   background-color: #2c2c3c;
   color: #fff;
   font-size: clamp(20px, 4vw, 28px);
@@ -49,8 +49,8 @@ body {
 .swipeLabel {
   position: absolute;
   top: 50%;
-  width: 150px;
-  height: 400px;
+  width: clamp(80px, 20vw, 160px);
+  height: clamp(110px, 30vh, 220px);
   display: flex;
   align-items: center;
   justify-content: center;

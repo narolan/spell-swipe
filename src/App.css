@@ -43,8 +43,8 @@ body::before {
 }
 
 .card{
-  width: clamp(160px, 40vw, 320px);
-  height: clamp(220px, 60vh, 440px);
+  width: clamp(100px, 30vw, 320px);
+  height: clamp(200px, 40vh, 440px);
 
   color: #f8f4e3;
   font-family: 'Cinzel', serif;
@@ -91,8 +91,8 @@ body::before {
 .swipeLabel {
   position: absolute;
   top: 50%;
-  width: clamp(100px, 22vw, 180px);
-  height: clamp(140px, 32vh, 240px);
+  width: clamp(100px, 20vw, 180px);
+  height: clamp(140px, 30vh, 240px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -153,8 +153,8 @@ body::before {
 
 .scoreOverlay {
   position: fixed;
-  top: 2rem;
-  right: 3rem;
+  top: 1rem;
+  right: 1.5rem;
   font-size: 16px;
   color: #fff;
   background-color: rgba(0,0,0,0.5);

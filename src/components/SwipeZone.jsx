@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import Swipe from "react-easy-swipe";
 import Card from "./Card.jsx";
 import EndScreen from "./EndScreen.jsx";
+import ScoreOverlay from "./ScoreOverlay.jsx";
 
 const SwipeZone = () => {
     const [cards, setCards] = useState([
@@ -66,15 +67,24 @@ const SwipeZone = () => {
         setIsSwiping(false);
     }
 
-    if (!currentCard) return <EndScreen/>;
+    if (!currentCard) return (
+        <>
+            <ScoreOverlay
+                score={score}
+                attempts={attempts}
+                total={cards.length}
+            />
+            <EndScreen/>
+        </>
+    );
 
     return (
         <div className="swipeZone">
-            <div className="scoreOverlay">
-                <span>Score: {score} / {cards.length}</span>
-                <br/>
-                <span>Total attempts: {attempts}</span>
-            </div>
+            <ScoreOverlay
+                score={score}
+                attempts={attempts}
+                total={cards.length}
+            />
             <span className="swipeLabel left">Band</span>
             <span className="swipeLabel right">DnD Spell</span>
 

@@ -1,0 +1,1 @@
+export default __APP_VERSION__;

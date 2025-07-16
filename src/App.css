@@ -31,3 +31,14 @@ body::before {
   width: 100vw;
   overflow: hidden;
 }
+
+.version {
+  position: fixed;
+  bottom: 0.75rem;
+  right: 1rem;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.5);
+  font-family: monospace;
+  user-select: none;
+  pointer-events: none;
+}

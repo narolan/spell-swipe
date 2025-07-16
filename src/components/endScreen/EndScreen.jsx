@@ -1,4 +1,6 @@
 import React from 'react';
+import './EndScreen.css';
+import '../card/Card.css';
 
 const EndScreen = () => {
     return (

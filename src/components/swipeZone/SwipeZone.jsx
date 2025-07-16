@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
 import Swipe from "react-easy-swipe";
-import Card from "./Card.jsx";
-import EndScreen from "./EndScreen.jsx";
-import ScoreOverlay from "./ScoreOverlay.jsx";
+import './SwipeZone.css';
+import Card from "../card/Card.jsx";
+import EndScreen from "../endScreen/EndScreen.jsx";
+import ScoreOverlay from "../score/ScoreOverlay.jsx";
 
 const SwipeZone = () => {
     const [cards, setCards] = useState([

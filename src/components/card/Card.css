@@ -1,0 +1,41 @@
+.card{
+    width: clamp(100px, 30vw, 320px);
+    height: clamp(200px, 40vh, 440px);
+
+    color: #f8f4e3;
+    font-family: 'Cinzel', serif;
+    font-size: clamp(12px, 4vw, 28px);
+    padding: clamp(16px, 4vw, 24px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    background: rgba(44, 44, 60, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+
+    position: relative;
+    z-index: 2;
+
+    user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+
+    transition: transform 0.2s ease;
+}
+
+@keyframes shake {
+    0% { transform: translateX(-8px); }
+    25% { transform: translateX(8px); }
+    50% { transform: translateX(-6px); }
+    75% { transform: translateX(6px); }
+    100% { transform: translateX(0); }
+}
+
+.card.wrong {
+    animation: shake 0.4s ease;
+}

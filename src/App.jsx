@@ -1,6 +1,6 @@
 import React from "react";
 import './App.css'
-import SwipeZone from "./components/SwipeZone.jsx";
+import SwipeZone from "./components/swipeZone/SwipeZone.jsx";
 
 const App = () => {
     return (

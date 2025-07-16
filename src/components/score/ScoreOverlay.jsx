@@ -1,4 +1,5 @@
 import React from 'react';
+import './Score.css';
 
 const ScoreOverlay = ({score, attempts, total}) => {
     return (

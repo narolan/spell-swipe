@@ -1,0 +1,73 @@
+.swipeZone {
+    position: relative;
+    width: 100vw;
+    height: 400px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.swipeLabel {
+    position: absolute;
+    top: 50%;
+    width: clamp(100px, 20vw, 180px);
+    height: clamp(140px, 30vh, 240px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(12px, 4vw, 20px);
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.9);
+    background: radial-gradient(circle at center, rgba(255, 80, 80, 0.25), rgba(255, 80, 80, 0.05));
+    border: 2px dashed rgba(255, 80, 80, 0.3);
+    user-select: none;
+    pointer-events: none;
+    z-index: 0;
+    transform: translateY(-50%);
+    text-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(2px);
+}
+
+.swipeLabel.left {
+    left: 0;
+    border-top-right-radius: 16px;
+    border-bottom-right-radius: 16px;
+}
+
+.swipeLabel.right {
+    right: 0;
+    border-top-left-radius: 16px;
+    border-bottom-left-radius: 16px;
+    text-align: center;
+    background: radial-gradient(circle at center, rgba(80, 200, 255, 0.25), rgba(80, 200, 255, 0.05));
+    border: 2px dashed rgba(80, 200, 255, 0.3);
+}
+
+.feedbackBanner {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 12px 24px;
+    border-radius: 12px;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+    z-index: 10;
+}
+
+.feedbackBanner.show {
+    opacity: 1;
+}
+
+.feedbackBanner.correct {
+    background-color: rgba(0, 200, 0, 0.85);
+}
+
+.feedbackBanner.wrong {
+    background-color: rgba(200, 0, 0, 0.85);
+}

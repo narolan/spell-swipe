@@ -16,7 +16,9 @@ const App = () => {
                         onStart={() => setMode("classic")}
                     />
                     :
-                    <SwipeZone/>
+                    <SwipeZone
+                        onEnd={() => setMode(null)}
+                    />
             }
             <span className="version">{version}</span>
         </div>

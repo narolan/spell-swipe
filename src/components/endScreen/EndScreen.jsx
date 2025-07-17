@@ -6,7 +6,7 @@ import {updateHighScore} from "../../service/HighScoreService.js";
 const EndScreen = ({onEnd, mode, attempts, total}) => {
     updateHighScore(mode, (total/attempts) * 1000);
     return (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', justifyContent: 'center', alignItems: 'center' }}>
             <div className="card endCard">
                 <h3>🎉 Done!</h3>
             </div>

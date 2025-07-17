@@ -5,7 +5,7 @@ import Card from "../card/Card.jsx";
 import EndScreen from "../endScreen/EndScreen.jsx";
 import ScoreOverlay from "../score/ScoreOverlay.jsx";
 
-const SwipeZone = ({onEnd}) => {
+const SwipeZone = ({onEnd, mode}) => {
     const [cards, setCards] = useState([
         {name: "Fireball", type: "spell"},
         {name: "DoomSword", type: "band"},
@@ -76,6 +76,9 @@ const SwipeZone = ({onEnd}) => {
                 total={cards.length}
             />
             <EndScreen
+                attempts={attempts}
+                total={cards.length}
+                mode={mode}
                 onEnd={onEnd}
             />
         </>

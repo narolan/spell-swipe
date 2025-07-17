@@ -13,11 +13,12 @@ const App = () => {
             {
                 mode === null ?
                     <MainMenu
-                        onStart={() => setMode("classic")}
+                        onStartClassic={() => setMode("classic")}
                     />
                     :
                     <SwipeZone
                         onEnd={() => setMode(null)}
+                        mode={mode}
                     />
             }
             <span className="version">{version}</span>

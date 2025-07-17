@@ -1,8 +1,10 @@
 import React from 'react';
 import './EndScreen.css';
 import '../card/Card.css';
+import {updateHighScore} from "../../service/HighScoreService.js";
 
-const EndScreen = ({onEnd}) => {
+const EndScreen = ({onEnd, mode, attempts, total}) => {
+    updateHighScore(mode, (total/attempts) * 1000);
     return (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
             <div className="card endCard">

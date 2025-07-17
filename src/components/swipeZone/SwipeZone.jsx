@@ -109,14 +109,19 @@ const SwipeZone = ({onEnd, mode}) => {
                     setShowFeedback(null);
                 }, 1000);
             } else {
-                setTimeout(() => {
-                    const remaining = cards.slice(index);
-                    const before = cards.slice(0, index);
-                    const shuffled = shuffleArray(remaining);
-                    setCards([...before, ...shuffled]);
-                    setIndex(index);
-                    setShowFeedback(null);
-                }, 1000);
+                if (mode === "hardcore") {
+                    setIndex(cards.length);
+                    console.log(index);
+                } else {
+                    setTimeout(() => {
+                        const remaining = cards.slice(index);
+                        const before = cards.slice(0, index);
+                        const shuffled = shuffleArray(remaining);
+                        setCards([...before, ...shuffled]);
+                        setIndex(index);
+                        setShowFeedback(null);
+                    }, 1000);
+                }
             }
         }
 
@@ -133,6 +138,7 @@ const SwipeZone = ({onEnd, mode}) => {
             />
             <EndScreen
                 attempts={attempts}
+                score={score}
                 total={cards.length}
                 mode={mode}
                 onEnd={onEnd}

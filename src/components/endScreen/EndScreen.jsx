@@ -3,8 +3,15 @@ import './EndScreen.css';
 import '../card/Card.css';
 import {updateHighScore} from "../../service/HighScoreService.js";
 
-const EndScreen = ({onEnd, mode, attempts, total}) => {
-    let newScore = Math.round((total/attempts) * 1000);
+const EndScreen = ({onEnd, mode, attempts, total, score}) => {
+    let newScore = 0;
+    if (mode === "classic") {
+        newScore = Math.round((total / attempts) * 1000);
+    } else if (mode === "hardcore") {
+        if (score !== 0) {
+            newScore = Math.round((score / total) * 1000);
+        }
+    }
     updateHighScore(mode, newScore);
     return (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', justifyContent: 'center', alignItems: 'center' }}>

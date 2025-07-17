@@ -19,6 +19,10 @@ const App = () => {
                             setMode("classic");
                             setScreen("game");
                         }}
+                        onStartHardcore={() => {
+                            setMode("hardcore");
+                            setScreen("game");
+                        }}
                         onShowScores={() => setScreen("scores")}
                     />
                 )

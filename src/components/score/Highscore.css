@@ -1,0 +1,94 @@
+.highscoreScreen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1rem;
+    height: 100vh;
+    box-sizing: border-box;
+    position: relative;
+    text-align: center;
+    color: #f8f4e3;
+    font-family: 'Cinzel', serif;
+}
+
+.scoreCardScrollArea {
+    flex: 1;
+    width: 100%;
+    overflow-y: auto;
+    padding-bottom: 2rem;
+}
+
+.screenTitle {
+    font-size: 2rem;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.6);
+}
+
+.scoreCardContainer {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    align-items: center;
+    justify-content: flex-start;
+    padding-bottom: 1rem;
+}
+
+.scoreCard {
+    background: rgba(44, 44, 60, 0.5);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    padding: .5rem;
+    width: min(90%, 400px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(6px);
+    transition: transform 0.2s ease;
+}
+
+.scoreCard:hover {
+    transform: scale(1.02);
+}
+
+.modeTitle {
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+    color: #ffd700;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+}
+
+.scoreText {
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+.scoreValue {
+    color: #00ffcc;
+    font-weight: bold;
+}
+
+.scoreDivider {
+    color: #999;
+}
+
+.scoreMax {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.secondaryButton {
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    padding: 10px 24px;
+    margin-top: 1rem;
+
+    color: #f8f4e3;
+    background-color: rgba(44, 44, 60, 0.5);
+
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    cursor: pointer;
+
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.secondaryButton:hover {
+    background-color: rgba(44, 44, 60, 0.7);
+    transform: scale(1.05);
+}

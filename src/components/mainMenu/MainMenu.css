@@ -5,6 +5,7 @@
     justify-content: center;
     text-align: center;
     height: 100vh;
+    width: clamp(200px, 40vw, 600px);
     padding: 0 1rem;
 }
 
@@ -30,7 +31,9 @@
     font-family: 'Cinzel', serif;
     font-size: 1.25rem;
     padding: 12px 32px;
+    margin-bottom: 1rem;
     color: #f8f4e3;
+    width: 100%;
     background: radial-gradient(circle at center, rgba(80, 0, 0, 0.8), rgba(20, 0, 0, 0.9));
     border: 2px solid rgba(255, 255, 255, 0.2);
     border-radius: 12px;

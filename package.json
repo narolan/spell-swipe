@@ -1,7 +1,7 @@
 {
   "name": "spell-swipe",
   "private": true,
-  "version": "1.0.15",
+  "version": "1.0.16",
   "type": "module",
   "homepage": "https://narolan.github.io/spell-swipe",
   "scripts": {

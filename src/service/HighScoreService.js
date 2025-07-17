@@ -11,7 +11,6 @@ export async function getHighScore(mode) {
 
 export async function updateHighScore(mode, newScore) {
     let allHighScores = await getAllHighScores();
-    newScore = Math.round(newScore);
     const current = allHighScores[mode];
     if (!current || newScore > current) {
         await saveHighScore(mode, newScore);

@@ -1,6 +1,6 @@
 .swipeZone {
     position: relative;
-    width: 100vw;
+    width: 100%;
     height: clamp(280px, 60vh, 400px);
 
     display: flex;

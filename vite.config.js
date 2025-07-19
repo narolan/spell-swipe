@@ -9,6 +9,7 @@ export default defineConfig({
         react(),
         VitePWA({
                 registerType: 'autoUpdate',
+                includeAssets: ['favicon.svg'],
                 manifest: {
                     name: 'Spell Swipe',
                     short_name: 'SpellSwipe',

@@ -35,7 +35,7 @@ const fetchAllCards = () => {
         { "name": "Arms of Hadar", "type": "spell" },
         { "name": "Darkthrone", "type": "band" },
         { "name": "Thunderwave", "type": "spell" },
-        { "name": "Immolation", "type": "band" },
+        { "name": "Cloak", "type": "band" },
         { "name": "Guiding Bolt", "type": "spell" },
         { "name": "Venom", "type": "band" },
         { "name": "Chill Touch", "type": "spell" },

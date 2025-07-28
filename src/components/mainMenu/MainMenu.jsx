@@ -1,7 +1,7 @@
 import React from 'react';
 import './MainMenu.css'
 
-const MainMenu = ({onStartClassic, onStartHardcore, onShowScores}) => {
+const MainMenu = ({onStartClassic, onStartHardcore, onStartClassMode, onShowScores}) => {
     return (
         <div className="mainMenu">
             <h2 className="mainMenuTitle">
@@ -12,6 +12,7 @@ const MainMenu = ({onStartClassic, onStartHardcore, onShowScores}) => {
             <h3 className="mainMenuSubTitle">Is it a DnD Spell or is it a metalband?</h3>
             <button className="playButton" onClick={onStartClassic}>Classic</button>
             <button className="playButton" onClick={onStartHardcore}>Hardcore</button>
+            <button className="playButton" onClick={onStartClassMode}>Class Mode</button>
             <button className="playButton" onClick={onShowScores}>Personal Highscores</button>
         </div>
     )

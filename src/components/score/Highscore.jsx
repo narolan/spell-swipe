@@ -5,7 +5,14 @@ import './Highscore.css';
 const MODES = [
     {key: 'classic', name: 'Classic', max: 1000},
     {key: 'hardcore', name: 'Hardcore', max: 1000},
-    // Add more modes here as needed
+    {key: 'Bard', name: 'Bard', max: 1000},
+    {key: 'Cleric', name: 'Cleric', max: 1000},
+    {key: 'Druid', name: 'Druid', max: 1000},
+    {key: 'Paladin', name: 'Paladin', max: 1000},
+    {key: 'Ranger', name: 'Ranger', max: 1000},
+    {key: 'Sorcerer', name: 'Sorcerer', max: 1000},
+    {key: 'Warlock', name: 'Warlock', max: 1000},
+    {key: 'Wizard', name: 'Wizard', max: 1000},
 ];
 
 const Highscore = ({onBack}) => {

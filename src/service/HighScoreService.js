@@ -9,9 +9,16 @@ export async function getHighScore(mode) {
     return allHighScores[mode];
 }
 
-export async function updateHighScore(mode, newScore) {
+export async function updateHighScore(mode, newScore, selectedClass) {
     let allHighScores = await getAllHighScores();
-    const current = allHighScores[mode];
+
+    let current;
+    if (selectedClass) {
+        current = allHighScores[selectedClass];
+        mode = selectedClass;
+    } else {
+        current = allHighScores[mode];
+    }
     if (!current || newScore > current) {
         await saveHighScore(mode, newScore);
     }

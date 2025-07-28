@@ -6,6 +6,7 @@ import MainMenu from "./components/mainMenu/MainMenu.jsx";
 import Highscore from "./components/score/Highscore.jsx";
 import InstallPrompt from "./components/installPrompt/InstallPrompt.jsx";
 import {registerSW} from "virtual:pwa-register";
+import {ClassSelect} from "./components/mainMenu/ClassSelect.jsx";
 
 registerSW({
     onRegisteredSW(swUrl, registration) {
@@ -19,7 +20,6 @@ registerSW({
             if (newWorker) {
                 newWorker.addEventListener('statechange', () => {
                     if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-                        console.log("reloading")
                         window.location.reload();
                     }
                 });
@@ -32,6 +32,7 @@ const App = () => {
 
     const [screen, setScreen] = useState("menu");
     const [mode, setMode] = useState(null);
+    const [cls, setClass] = useState(null);
     const [deferredPrompt, setDeferredPrompt] = useState(null);
     const [showInstallPrompt, setShowInstallPrompt] = useState(false);
 
@@ -72,6 +73,14 @@ const App = () => {
     };
 
 
+    function returnToMainMenu() {
+        return () => {
+            setMode(null);
+            setScreen("menu");
+            setClass(null);
+        };
+    }
+
     return (
         <div className="cardContainer">
             {
@@ -85,18 +94,30 @@ const App = () => {
                             setMode("hardcore");
                             setScreen("game");
                         }}
+                        onStartClassMode={() => {
+                            setMode("class");
+                            setScreen("submenu");
+                        }}
                         onShowScores={() => setScreen("scores")}
                     />
                 )
             }
             {
+                screen === "submenu" &&
+                <ClassSelect
+                    onBack={returnToMainMenu()}
+                    onSelect={(cls) => {
+                        setClass(cls);
+                        setScreen("game");
+                    }}
+                />
+            }
+            {
                 screen === "game" &&
                 <SwipeZone
-                    onEnd={() => {
-                        setMode(null);
-                        setScreen("menu");
-                    }}
+                    onEnd={returnToMainMenu()}
                     mode={mode}
+                    selectedClass={cls}
                 />
             }
             {

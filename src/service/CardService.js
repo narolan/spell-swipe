@@ -1,10 +1,15 @@
-import {fetchAllCards} from "./ApiService.js";
+import {fetchAllCards, fetchClassCards} from "./ApiService.js";
+
+const getClassCards = (selectedClass) => {
+    return fetchClassCards(selectedClass);
+}
+
 
 const getAllCards = () => {
-    return fetchAllCards()
-        .sort(() => Math.random() - 0.5)
+    return fetchAllCards();
 }
 
 export {
     getAllCards,
+    getClassCards,
 }

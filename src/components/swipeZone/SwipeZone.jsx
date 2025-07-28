@@ -4,9 +4,9 @@ import './SwipeZone.css';
 import Card from "../card/Card.jsx";
 import EndScreen from "../endScreen/EndScreen.jsx";
 import ScoreOverlay from "../score/ScoreOverlay.jsx";
-import {getAllCards} from "../../service/CardService.js";
+import {getAllCards, getClassCards} from "../../service/CardService.js";
 
-const SwipeZone = ({onEnd, mode}) => {
+const SwipeZone = ({onEnd, mode, selectedClass}) => {
     const [cards, setCards] = useState([]);
     const [index, setIndex] = useState(0);
     const [x, setX] = useState(0);
@@ -21,7 +21,16 @@ const SwipeZone = ({onEnd, mode}) => {
             setCards(loadedCards);
         }
 
-        loadCards();
+        async function loadClassCards() {
+            const loadedCards = await getClassCards(selectedClass);
+            setCards(loadedCards);
+        }
+
+        if (selectedClass) {
+            loadClassCards()
+        } else {
+            loadCards();
+        }
     }, []);
 
     const currentCard = cards[index];
@@ -44,10 +53,18 @@ const SwipeZone = ({onEnd, mode}) => {
 
         if (direction) {
             setAttempts((prev) => prev + 1);
-            const isCorrect = (
-                (direction === "right" && currentCard.type === "spell") ||
-                (direction === "left" && currentCard.type === "band")
-            )
+            let isCorrect;
+            if (selectedClass) {
+                isCorrect = (
+                    (direction === "right" && currentCard.correct) ||
+                    (direction === "left" && !currentCard.correct)
+                )
+            } else {
+                isCorrect = (
+                    (direction === "right" && currentCard.type === "spell") ||
+                    (direction === "left" && currentCard.type === "band")
+                )
+            }
 
             setShowFeedback(isCorrect ? 'correct' : 'wrong');
 
@@ -60,7 +77,6 @@ const SwipeZone = ({onEnd, mode}) => {
             } else {
                 if (mode === "hardcore") {
                     setIndex(cards.length);
-                    console.log(index);
                 } else {
                     setTimeout(() => {
                         const remaining = cards.slice(index);
@@ -91,6 +107,7 @@ const SwipeZone = ({onEnd, mode}) => {
                 total={cards.length}
                 mode={mode}
                 onEnd={onEnd}
+                selectedClass={selectedClass}
             />
         </>
     );
@@ -102,8 +119,20 @@ const SwipeZone = ({onEnd, mode}) => {
                 attempts={attempts}
                 total={cards.length}
             />
-            <span className="swipeLabel left">Band</span>
-            <span className="swipeLabel right">DnD Spell</span>
+            <span className="swipeLabel left">
+                {
+                    selectedClass ?
+                        "Other class"
+                        : "Band"
+                }
+            </span>
+            <span className="swipeLabel right">
+                {
+                    selectedClass ?
+                        selectedClass
+                        : "DnD Spell"
+                }
+            </span>
 
             <Swipe
                 onSwipeMove={showFeedback ? undefined : handleSwipeMove}
